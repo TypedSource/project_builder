@@ -3,6 +3,7 @@ node_modules
 build
 typings
 *.js
+!Gruntfile.js
 *.css
 .tscache
 *.map
