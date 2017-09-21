@@ -2,12 +2,19 @@
 
 ## Intallation
 
-open your console and run the following sequence
+You need to have installed npm with some global packages first.
+
+    npm install grunt --global
+    npm install typings --global
+    npm install typescript --global
+
+if you have done this one time on your machine you can use the installation of the project:
 
     npm install
     typings install dt~jquery --global --save
-    grunt build
+    grunt init
 
-now the project has all needed dependencies and is build up the with the last standing.
+there is also a task with browser syncronization running on localhost:3000 and watch for changes
+on html, typescript and less files.
 
-on developing you can use ``grunt`` default task to run a automated task that will compile typescript for you, run a webserver at locahost:3000 and automaticly refreshes your chrome on changes on any defined source file
+    grunt auto
