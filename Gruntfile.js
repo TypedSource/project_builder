@@ -65,7 +65,7 @@ module.exports = function (grunt) {
             },
             data: {
                 cwd: 'src/data',
-                files: ['**/*'],
+                files: ['**/*.json'],
                 tasks: ['copy:data'],
             },
         },
