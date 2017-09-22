@@ -18,6 +18,14 @@ module.exports = function (grunt) {
                     src: ['**'],
                     dest: 'build'
                 }]
+            },
+            data: {
+                files:[{
+                    expand: true,
+                    cwd: 'src/data',
+                    src: ['**'],
+                    dest: 'build/data'
+                }],
             }
         },
 
@@ -28,13 +36,13 @@ module.exports = function (grunt) {
             build: {
                 src: 'src/start.js',
                 dest: 'build/js/<%= pkg.name %>.min.js'
-            }
+            },
         },
 
         ts: {
             default: {
                 tsconfig: true
-            }
+            },
         },
 
         watch: {
@@ -53,8 +61,13 @@ module.exports = function (grunt) {
             less: {
                 cwd: 'src',
                 files: ['**/*.less'],
-                tasks: ['less:build']
-            }
+                tasks: ['less:build'],
+            },
+            data: {
+                cwd: 'src/data',
+                files: ['**/*'],
+                tasks: ['copy:data'],
+            },
         },
 
         open: {
@@ -70,6 +83,7 @@ module.exports = function (grunt) {
                     'build/**/*.html',
                     'build/**/<%= pkg.name %>.min.js',
                     'build/**/<%= pkg.name %>.css',
+                    'build/data/**/*',
                 ],
                 options: {
                     watchTask: true,
@@ -126,6 +140,5 @@ module.exports = function (grunt) {
     grunt.registerTask('create_js', ['ts', 'uglify', 'clean:js_files']);
     grunt.registerTask('install', ['less', 'create_js', 'copy']);
     grunt.registerTask('auto', ['fileExists', 'browserSync', 'watch']);
-
 
 }
